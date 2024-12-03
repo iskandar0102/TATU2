@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charts</title>
+    <link rel="stylesheet" href="strategiya.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+    }
+    #TTShBChart {
+      width: 600px;
+      height: 600px;
+      margin: 0 auto;
+
+    }
+#OIDBChart{
+    margin-top: 2%;
+}
+
+
+  </style>
+
+
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand"><span>TATU</span> Xizmatlari</a>
+<!--     <a href="#" class="navbar-brand"><img src="https://www.dropbox.com/s/zzwcz0xpj95sy7p/logo%20%2810%29.png?raw=1" style="width: 50px; vertical-align: middle;"></a> -->
+    <ul>
+      <li><a href="oqtuvchilar.html">O'qtuchilar</a></li>
+      <li><a href="hodimlar.html">Hodimlar</a></li>
+      <li><a href="Talabalar.html">Talablar</a></li>
+          <li><a href="masofaviy.html">Masofaviy</a></li>
+         <li><a href="Statistika.html">Stastistika</a></li>
+    </ul>
+    <button class="navbar-toggler">
+      <span></span>
+    </button>
+  </nav>
+
+
+  <script src="script.js"></script>
+
+
+<div class="container">
+  <h2>O'qituvchilar Ilmiy Darajasi Bo'yicha (Ayollar va Erkaklar)</h2>
+  <canvas id="OIDBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>O'qituvchilar Ilmiy Unvon Bo'yicha</h2>
+  <canvas id="OIUBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>O'qituvchilar Yoshi Bo'yicha</h2>
+  <canvas id="OYBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>Talabalar (Hududlar bo‘yicha)</h2>
+  <canvas id="THBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>Talabalar Jinsi Bo'yicha</h2>
+  <canvas id="TJBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>Talabalar turar joy bo'yicha</h2>
+  <canvas id="TTJBChart"></canvas>
+</div>
+
+<div class="container">
+  <h2>Talabalarni To'lov Shakli Bo'yicha</h2>
+  <canvas id="TTShBChart"></canvas>
+</div>
+
+<script>
+  // O'qituvchilar Ilmiy Darajasi Bo'yicha (Ayollar va Erkaklar)
+  new Chart(document.getElementById('OIDBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["Professor", "Associate Professor", "Senior Lecturer", "Lecturer", "Assistant Lecturer"],
+      datasets: [
+        {
+          label: "Ayollar",
+          data: [5, 10, 15, 20, 25],
+          backgroundColor: "#FFB6C1",
+          borderColor: "#FF69B4",
+          borderWidth: 1,
+        },
+        {
+          label: "Erkaklar",
+          data: [15, 10, 10, 20, 30],
+          backgroundColor: "#ADD8E6",
+          borderColor: "#0000FF",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}` } },
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: "#e0e0e0" } },
+        y: { grid: { color: "#e0e0e0" } },
+      },
+    },
+  });
+
+  // O'qituvchilar Ilmiy Unvon Bo'yicha
+  new Chart(document.getElementById('OIUBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["Professor", "Associate Professor", "Senior Lecturer", "Lecturer", "Assistant Lecturer"],
+      datasets: [
+        {
+          label: "O'qituvchilar Ilmiy Unvon Bo'yicha",
+          data: [10, 20, 30, 40, 50],
+          backgroundColor: ["#FF5733", "#C70039", "#900C3F", "#581845", "#4C0044"],
+          borderColor: ["#FF5733", "#C70039", "#900C3F", "#581845", "#4C0044"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}` } },
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: "#e0e0e0" } },
+        y: { grid: { color: "#e0e0e0" } },
+      },
+    },
+  });
+
+  // O'qituvchilar Yoshi Bo'yicha
+  new Chart(document.getElementById('OYBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["30-40 Yosh", "40-50 Yosh", "50-60 Yosh", "60-70 Yosh", "70+ Yosh"],
+      datasets: [
+        {
+          label: "O'qituvchilar Yoshi Bo'yicha",
+          data: [5, 15, 25, 20, 10],
+          backgroundColor: ["#FF5733", "#C70039", "#900C3F", "#581845", "#4C0044"],
+          borderColor: ["#FF5733", "#C70039", "#900C3F", "#581845", "#4C0044"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}` } },
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: "#e0e0e0" } },
+        y: { grid: { color: "#e0e0e0" } },
+      },
+    },
+  });
+
+  // Talabalar (Hududlar bo‘yicha)
+  new Chart(document.getElementById('THBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["Andijon viloyati", "Farg'ona viloyati", "Namangan viloyati", "Qashqadaryo viloyati", "Samarqand viloyati", "Surxondaryo viloyati", "Toshkent"],
+      datasets: [
+        {
+          label: "Talabalar soni",
+          data: [800, 1000, 900, 1200, 700, 600, 3500],
+          backgroundColor: "rgba(99, 99, 255, 0.6)",
+          borderColor: "rgba(99, 99, 255, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: { display: true, text: "Talabalar (Hududlar bo‘yicha)" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw} talabalar` } },
+      },
+      scales: { y: { beginAtZero: true } },
+    },
+  });
+
+  // Talabalar Jinsi Bo'yicha
+  new Chart(document.getElementById('TJBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["Erkaklar", "Ayollar"],
+      datasets: [
+        {
+          label: "Talabalar Jinsi Bo'yicha",
+          data: [3000, 1500],
+          backgroundColor: ["#4CAF50", "#2196F3"],
+          borderColor: ["#4CAF50", "#2196F3"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}` } },
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: "#e0e0e0" } },
+        y: { grid: { color: "#e0e0e0" } },
+      },
+    },
+  });
+
+  // Talabalar turar joy bo'yicha
+  new Chart(document.getElementById('TTJBChart'), {
+    type: 'bar',
+    data: {
+      labels: ["O'z uyida", "Qarindoshining uyida", "Tanishining uyida", "Ijaradagi uyda", "Talabalar turar joyida"],
+      datasets: [
+        {
+          label: "Talabalar turar joy bo'yicha",
+          data: [2200, 500, 1000, 300, 2500],
+          backgroundColor: "rgba(134, 91, 255, 0.6)",
+          borderColor: "rgba(134, 91, 255, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}` } },
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: "#e0e0e0" } },
+        y: { grid: { color: "#e0e0e0" } },
+      },
+    },
+  });
+
+  // Talabalarni To'lov Shakli Bo'yicha
+
+
+  new Chart(document.getElementById('TTShBChart'), {
+
+    type: 'pie',
+    data: {
+      labels: ["Byudjet (Grant)", "Oddiy kontrakt", "Super kontrakt", "Ijtimoiy yordam", "Xususiy shartnoma"],
+      datasets: [
+        {
+          data: [30, 40, 15, 5, 5],
+          backgroundColor: ["#4CAF50", "#2196F3", "#FFC107", "#FF5722", "#9C27B0"],
+          hoverOffset: 4,
+
+
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        tooltip: { callbacks: { label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}%` } },
+      },
+    },
+  });
+</script>
+<div class="footer-container">
+        <div class="footer-section about">
+            <h3>Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari Universiteti</h3>
+            <p>Bizning universitet haqida qisqacha ma'lumot. TATU O'zbekiston IT sohasining yetakchi ta'lim muassasalaridan biridir.</p>
+        </div>
+        <div class="footer-section links">
+            <h3>Foydali havolalar</h3>
+            <ul>
+                <li><a href="# ">Biz haqimizda</a></li>
+                <li><a href="# ">Xizmatlar</a></li>
+                <li><a href="#">Bog'lanish</a></li>
+
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Aloqa</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Toshkent, O'zbekiston</p>
+            <p><i class="fas fa-phone"></i> +99894 100 40 53</p>
+            <p><i class="fas fa-envelope"></i> info@tatu.uz</p>
+        </div>
+    </div><div class="footer-bottom">
+        <p>© 2024 Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari Universiteti. Barcha huquqlar himoyalangan.</p>
+    </div>
+</body>
+</html>
